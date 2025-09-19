@@ -68,9 +68,9 @@ function AppContent() {
           <Route 
             path="/report" 
             element={
-             
+              <ProtectedRoute>
                 <ReportComplaint />
-              
+              </ProtectedRoute>
             } 
           />
           <Route 
