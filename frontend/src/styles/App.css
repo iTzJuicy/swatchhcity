@@ -22,7 +22,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Account for fixed header */
+   /* Account for fixed header */
 }
 
 /* Utility Classes */
@@ -73,18 +73,13 @@ body {
   color: var(--white);
 }
 
-.btn-primary:hover {
-  background-color: var(--leaf-green);
-}
 
 .btn-secondary {
   background-color: var(--sky-blue);
   color: var(--white);
 }
 
-.btn-secondary:hover {
-  background-color: #29b6f6;
-}
+
 
 .btn-outline {
   background-color: transparent;
