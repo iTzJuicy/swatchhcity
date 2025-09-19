@@ -1,0 +1,50 @@
+# Node.js / JavaScript
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# Build directories
+dist/
+build/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Dependency directories (can be ignored for certain package managers)
+bower_components/
+
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# Temporary files
+*.swp
+*~
+*.swo
+*.bak
+
+# Coverage directory
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Jest testing
+jest-test-results/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# MongoDB Data
+data/
