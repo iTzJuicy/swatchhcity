@@ -42,17 +42,26 @@ export const AuthProvider = ({ children }) => {
 
   // Login function
   const login = async (email, password) => {
-    try {
-      const res = await axios.post("/auth/login", { email, password });
-      setCurrentUser(res.data.user);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      toast.success("Logged in successfully! ");
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Login failed ");
-      throw err;
-    }
-  };
+  try {
+    const res = await axios.post("/auth/login", { email, password });
+
+    const user = {
+      _id: res.data._id,
+      name: res.data.name,
+      email: res.data.email,
+      role: res.data.role,
+    };
+
+    setCurrentUser(user);
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    toast.success("Logged in successfully! 🚀");
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Login failed");
+    throw err;
+  }
+};
 
   // Logout function
   const logout = () => {
