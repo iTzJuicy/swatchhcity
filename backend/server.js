@@ -1,7 +1,7 @@
-const http = require("http");
-const app = require("./app");
-const { Server } = require("socket.io");
-const connectDB = require("./config/database");
+import http from "http";
+import { Server } from "socket.io";
+import app from "./app.js";
+import connectDB from "./config/database.js";
 
 const PORT = process.env.PORT;
 
@@ -16,6 +16,7 @@ const io = new Server(server, {
     origin: "*",
   },
 });
+
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 });

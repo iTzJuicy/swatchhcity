@@ -85,7 +85,7 @@ export default function ReportComplaint() {
       const aiForm = new FormData();
       aiForm.append("image", formData.image);
       const aiRes = await classifyWaste(aiForm);
-      const category = aiRes.data.category;
+      const category = aiRes.data.category ;
 
       // Submit complaint
       const complaintForm = new FormData();
@@ -94,7 +94,7 @@ export default function ReportComplaint() {
       complaintForm.append("image", formData.image);
       complaintForm.append("lat", formData.location.lat);
       complaintForm.append("lng", formData.location.lng);
-      complaintForm.append("userId", currentUser.id);
+      complaintForm.append("userId", currentUser._id);
       if (formData.address) {
         complaintForm.append("address", formData.address);
       }

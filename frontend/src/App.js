@@ -15,6 +15,7 @@ import ReportComplaint from './pages/ReportComplaint';
 import Complaints from './pages/Complaints';
 import Rewards from './pages/Rewards';
 import Profile from './pages/Profile';
+import Categorise from './pages/Categorise';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
@@ -73,6 +74,14 @@ function AppContent() {
               </ProtectedRoute>
             } 
           />
+          <Route 
+                path="/categorise" 
+                element={
+                    <ProtectedRoute>
+                        <Categorise />
+                    </ProtectedRoute>
+                } 
+            />
           <Route 
             path="/complaints" 
             element={

@@ -14,8 +14,21 @@ API.interceptors.request.use((config) => {
 
 export const signupUser = (data) => API.post("/users/signup", data);
 export const loginUser = (data) => API.post("/users/login", data);
-export const submitComplaint = (data) => API.post("/complaints", data);
+
+export const classifyWaste = (formData) => {
+  return API.post("/ai/waste-category", formData, {
+    headers: { "Content-Type": "multipart/form-data" }
+  });
+};
+
+export const submitComplaint = (formData) => {
+  return API.post("/reports", formData, {
+    headers: { "Content-Type": "multipart/form-data" }
+  });
+};
+
 export const getComplaints = () => API.get("/complaints");
-// **AI APIs**
-export const classifyWaste = (formData) => API.post("/ai/classify", formData);
+
+
+
 export default API;

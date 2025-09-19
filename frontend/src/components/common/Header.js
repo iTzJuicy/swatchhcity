@@ -43,6 +43,7 @@ const Header = () => {
               <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
               <Link to="/report" onClick={() => setIsMenuOpen(false)}>Report Issue</Link>
               <Link to="/complaints" onClick={() => setIsMenuOpen(false)}>My Complaints</Link>
+              <Link to="/categorise" onClick={() => setIsMenuOpen(false)}>Segregate</Link>
               <Link to="/rewards" onClick={() => setIsMenuOpen(false)}>Rewards</Link>
               <div className="user-menu">
                 <span className="welcome-text">Hello, {currentUser.name}</span>
