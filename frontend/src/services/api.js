@@ -16,5 +16,6 @@ export const signupUser = (data) => API.post("/users/signup", data);
 export const loginUser = (data) => API.post("/users/login", data);
 export const submitComplaint = (data) => API.post("/complaints", data);
 export const getComplaints = () => API.get("/complaints");
-
+// **AI APIs**
+export const classifyWaste = (formData) => API.post("/ai/classify", formData);
 export default API;
