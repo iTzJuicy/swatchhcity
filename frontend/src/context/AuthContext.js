@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "../services/api";
 import { toast } from "react-toastify";
 
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -10,16 +11,25 @@ export const AuthProvider = ({ children }) => {
 
   // Load user from localStorage on app start
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (token && user) setCurrentUser(user);
-    setLoading(false);
-  }, []);
+  const token = localStorage.getItem("token");
+  const userString = localStorage.getItem("user");
+  let user = null;
+
+  try {
+    if (userString) user = JSON.parse(userString);
+  } catch (err) {
+    console.error("Failed to parse user from localStorage", err);
+    localStorage.removeItem("user"); // clean bad value
+  }
+
+  if (token && user) setCurrentUser(user);
+  setLoading(false);
+}, []);
 
   // Signup function
   const signup = async (name, email, password) => {
     try {
-      const res = await axios.post("/users/signup", { name, email, password });
+      const res = await axios.post("/auth/register", { name, email, password });
       setCurrentUser(res.data.user);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -33,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   // Login function
   const login = async (email, password) => {
     try {
-      const res = await axios.post("/users/login", { email, password });
+      const res = await axios.post("/auth/login", { email, password });
       setCurrentUser(res.data.user);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
