@@ -15,6 +15,8 @@ import ReportComplaint from './pages/ReportComplaint';
 import Complaints from './pages/Complaints';
 import Rewards from './pages/Rewards';
 import Profile from './pages/Profile';
+import ListWaste from './pages/ListWaste';
+import DealerListings from './pages/DealerListings';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
@@ -94,6 +96,22 @@ function AppContent() {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            } 
+          />
+           <Route 
+            path="/list-waste" 
+            element={
+             <ProtectedRoute>
+                <ListWaste />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/dealer-listings" 
+            element={
+              <ProtectedRoute>
+                <DealerListings />
               </ProtectedRoute>
             } 
           />

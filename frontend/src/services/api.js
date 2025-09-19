@@ -18,4 +18,9 @@ export const submitComplaint = (data) => API.post("/complaints", data);
 export const getComplaints = () => API.get("/complaints");
 // **AI APIs**
 export const classifyWaste = (formData) => API.post("/ai/classify", formData);
+// Listings APIs
+export const submitListing = (formData) => API.post("/listings", formData);
+export const getListings = () => API.get("/listings");
+export const acceptListing = (listingId, dealerId) => API.post(`/listings/${listingId}/accept`, { dealerId });
+
 export default API;

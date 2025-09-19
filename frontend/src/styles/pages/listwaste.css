@@ -1,11 +1,11 @@
-/* src/styles/pages/report.css */
-.report-container {
+/* src/styles/pages/listwaste.css */
+.listwaste-container {
   min-height: calc(100vh - 120px);
   padding: 2rem 1rem;
 
 }
 
-.report-card {
+.listwaste-card {
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.report-card::before {
+.listwaste-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -26,23 +26,23 @@
   background: linear-gradient(90deg, #2E8B57 0%, #4682B4 50%, #FFD700 100%);
 }
 
-.report-header {
+.listwaste-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.report-header h2 {
+.listwaste-header h2 {
   color: #2E8B57;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
-.report-header p {
+.listwaste-header p {
   color: #6c757d;
   font-size: 1rem;
 }
 
-.report-form {
+.listwaste-form {
   margin-bottom: 2rem;
 }
 
@@ -58,23 +58,39 @@
   font-size: 0.95rem;
 }
 
+.form-group select,
+.form-group input[type="number"],
 .form-group textarea {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2.5rem;
   border: 2px solid #e9ecef;
   border-radius: 8px;
   font-size: 1rem;
-  font-family: inherit;
-  resize: vertical;
-  min-height: 100px;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  font-family: inherit;
 }
 
+.form-group select:focus,
+.form-group input[type="number"]:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #2E8B57;
   box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  padding-left: 1rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 3.5rem;
+  color: #6c757d;
+  font-size: 1rem;
 }
 
 .image-upload-container {
@@ -221,33 +237,33 @@
   transform: none;
 }
 
-.report-tips {
+.listwaste-benefits {
   padding: 1.5rem;
-  background-color: #f8f9fa;
+  background-color: #e8f5e8;
   border-radius: 8px;
-  border-left: 4px solid #FFD700;
+  border-left: 4px solid #2E8B57;
 }
 
-.report-tips h4 {
-  color: #343A40;
+.listwaste-benefits h4 {
+  color: #2E8B57;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
-.report-tips ul {
+.listwaste-benefits ul {
   list-style: none;
   padding: 0;
 }
 
-.report-tips li {
+.listwaste-benefits li {
   margin-bottom: 0.5rem;
-  color: #6c757d;
+  color: #2E8B57;
   position: relative;
   padding-left: 1.5rem;
 }
 
-.report-tips li::before {
-  content: "•";
+.listwaste-benefits li::before {
+  content: "✓";
   color: #2E8B57;
   font-weight: bold;
   position: absolute;
@@ -256,7 +272,7 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .report-card {
+  .listwaste-card {
     padding: 2rem 1.5rem;
   }
   
@@ -266,11 +282,11 @@
 }
 
 @media (max-width: 480px) {
-  .report-container {
+  .listwaste-container {
     padding: 1rem 0.5rem;
   }
   
-  .report-card {
+  .listwaste-card {
     padding: 1.5rem 1rem;
   }
   
