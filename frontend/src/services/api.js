@@ -24,10 +24,12 @@ export const loginUser = (data) => API.post("/users/login", data);
 export const getComplaints = () => API.get("/reports/all");
 export const getUserComplaints = (userId) => API.get(`/reports/user/${userId}`);
 // Update complaint status (admin)
-export const updateComplaintStatus = (complaintId, status) =>
-  API.patch(`/complaints/${complaintId}/status`, { status });
+export const updateComplaintStatus = (id, status) =>
+  API.patch(`/reports/${id}/status`, { status });
 
-export const submitListing = (data) => API.post("/listings", data);
+export const submitListing = (data) => API.post("/recycle", data);
+export const getRecycleListing = () => API.get("/recycle");
+
 
 // AI - Waste Classification
 export const classifyWaste = (formData) => {
@@ -50,5 +52,8 @@ export const acceptListing = (listingId, dealerId) =>
 // USER STATS + ACTIVITY
 export const getUserStats = () => API.get("/users/stats"); // ✅ NEW
 export const getRecentActivity = () => API.get("/users/activity"); // ✅ NEW
+
+export const getUserRewards = (userId) => API.get(`/rewards/user/${userId}`);
+
 
 export default API;

@@ -1,0 +1,136 @@
+.rewards-container {
+  min-height: 100vh;
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Ensures vertical centering */
+  padding: 24px; /* Increased padding for better spacing */
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 36px; /* Increased font size for prominence */
+  font-weight: bold;
+  margin-bottom: 16px; /* Slightly more spacing */
+  color: #333; /* Darker for better contrast */
+}
+
+.subtitle {
+  font-size: 20px; /* Larger subtitle */
+  margin-bottom: 32px; /* More space below */
+  color: #555;
+}
+
+.card {
+  background: white;
+  border-radius: 20px; /* Slightly larger border radius */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
+  padding: 40px; /* Increased padding for larger card */
+  max-width: 480px; /* Wider card for better proportion */
+  width: 100%;
+  text-align: center;
+}
+
+.icon {
+  width: 80px; /* Larger icon */
+  height: 80px;
+  margin: 0 auto 24px; /* More space below */
+  background: orange;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px; /* Larger star icon */
+}
+
+.card-title {
+  font-size: 24px; /* Larger title */
+  margin-bottom: 12px;
+}
+
+.credits {
+  font-size: 48px; /* Larger credits number */
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.badge {
+  font-size: 18px; /* Larger badge text */
+  color: #777;
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 16px; /* Thicker progress bar */
+  background: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 16px;
+  background: #22c55e; /* Green, unchanged */
+  border-radius: 8px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-size: 16px; /* Larger text */
+  color: #555;
+  margin-top: 12px;
+}
+
+.button-group {
+  margin-top: 32px; /* More space above buttons */
+  display: flex;
+  gap: 16px; /* Larger gap between buttons */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 24px; /* Larger buttons */
+  border: none;
+  border-radius: 10px; /* Slightly larger radius */
+  color: white;
+  font-size: 16px; /* Larger button text */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-blue {
+  background: #3b82f6;
+}
+.btn-blue:hover {
+  background: #2563eb;
+}
+
+.btn-green {
+  background: #16a34a;
+}
+.btn-green:hover {
+  background: #15803d;
+}
+
+.btn-yellow {
+  background: #eab308;
+}
+.btn-yellow:hover {
+  background: #ca8a04;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 24px; /* Larger loading text */
+}
+
+.error {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 24px; /* Larger error text */
+  color: red;
+}

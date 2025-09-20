@@ -48,3 +48,7 @@ docker-compose.override.yml
 
 # MongoDB Data
 data/
+
+backend/uploads/
+/uploads/
+uploads/

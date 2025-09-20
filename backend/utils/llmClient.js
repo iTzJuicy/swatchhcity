@@ -30,7 +30,7 @@ export const analyzeWasteImage = async (imageBuffer) => {
 
   // Prepare the prompt and image data for the API request
   const parts = [
-    { text: "Classify the waste in the image as 'wet', 'dry', or 'recyclable'. Provide concise composting and recycling advice based on the item. Respond in a strict JSON format with the keys 'category', 'compost_advice', and 'recyclable_advice'. Only provide the JSON object and no other text." },
+    { text: "Classify the waste in the image as 'wet', 'dry', or 'recyclable' or other , but need to provide one always. Provide concise composting and recycling advice based on the item. Respond in a strict JSON format with the keys 'category', 'compost_advice', and 'recyclable_advice'. Only provide the JSON object and no other text." },
     {
       inlineData: {
         data: imageBuffer.toString("base64"),

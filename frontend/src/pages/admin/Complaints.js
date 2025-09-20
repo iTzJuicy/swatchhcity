@@ -7,7 +7,7 @@ import "../../styles/pages/admincomplaints.css";
 export default function Complaints() {
   const [complaints, setComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("all"); 
   const [searchTerm, setSearchTerm] = useState("");
   const [updatingId, setUpdatingId] = useState(null);
 
@@ -196,10 +196,13 @@ export default function Complaints() {
                   </div>
                 </div>
 
-                {complaint.image && (
-                  <div className="complaint-image">
-                    <img src={complaint.image} alt="Complaint evidence" />
-                  </div>
+                {complaint.imageUrl && (
+                  console.log("Image url:",complaint.imageUrl),
+                  <img
+                    src={`http://localhost:5000${encodeURI(complaint.imageUrl)}`}
+                    alt="Complaint evidence"
+                    className="complaint-image"
+                  />
                 )}
 
                 <div className="card-body">

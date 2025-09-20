@@ -68,8 +68,10 @@ function AppContent() {
           <Route path="/report" element={<ProtectedRoute><ReportComplaint /></ProtectedRoute>} />
           <Route path="/rewards" element={<ProtectedRoute><Rewards /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/recyle-waste" element={<ProtectedRoute><ListWaste /></ProtectedRoute>} />
+          <Route path="/recycle-waste" element={<ProtectedRoute><ListWaste /></ProtectedRoute>} />
           <Route path="/my-complaints" element={<ProtectedRoute><MyComplaints /></ProtectedRoute>} />
+
+          <Route path="/dealer-listings" element={<ProtectedRoute><DealerListings /></ProtectedRoute>} />
 
           {/* Catch all */}
           <Route path="*" element={<Navigate to="/" />} />

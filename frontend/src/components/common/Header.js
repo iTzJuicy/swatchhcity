@@ -34,8 +34,7 @@ const Header = () => {
           <span></span>
           <span></span>
           <span></span>
-        </button>
-        
+        </button> 
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           {currentUser ? (
@@ -43,7 +42,8 @@ const Header = () => {
               <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
               <Link to="/report" onClick={() => setIsMenuOpen(false)}>Report Issue</Link>
               <Link to="/my-complaints" onClick={() => setIsMenuOpen(false)}>My Complaints</Link>
-              <Link to="/categorise" onClick={() => setIsMenuOpen(false)}>Segregate</Link>
+              {/*<Link to="/dealer-listings" onClick={() => setIsMenuOpen(false)}>dealer-listings</Link>*/}
+              <Link to="/recycle-waste" onClick={() => setIsMenuOpen(false)}>Recyle Waste's</Link>
               <Link to="/rewards" onClick={() => setIsMenuOpen(false)}>Rewards</Link>
               <div className="user-menu">
                 <span className="welcome-text">Hello, {currentUser.name}</span>

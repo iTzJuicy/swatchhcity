@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getListings, acceptListing } from "../../services/api";
-import { useAuth } from "../../context/AuthContext";
+import { getRecycleListing } from "../../services/api"; // <-- use your GET route
 import { toast } from "react-toastify";
 import AdminLayout from "../../components/common/admin/AdminLayout";
 import "../../styles/pages/dealerlistings.css";
 
 export default function DealerListings() {
-  const { currentUser } = useAuth(); // dealer
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [acceptingId, setAcceptingId] = useState(null);
 
   const menuItems = [
     { id: 1, title: "Dashboard", path: "/admin/dashboard", icon: "fas fa-tachometer-alt" },
@@ -23,25 +20,13 @@ export default function DealerListings() {
   const fetchListings = async () => {
     try {
       setLoading(true);
-      const res = await getListings();
+      const res = await getRecycleListing(); // <-- fetch from backend
       setListings(res.data);
     } catch (err) {
+      console.error(err);
       toast.error("Failed to fetch listings");
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleAccept = async (id) => {
-    setAcceptingId(id);
-    try {
-      await acceptListing(id, currentUser.id);
-      toast.success("Listing accepted successfully!");
-      fetchListings(); // refresh list
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to accept listing");
-    } finally {
-      setAcceptingId(null);
     }
   };
 
@@ -132,7 +117,7 @@ export default function DealerListings() {
 
                 {listing.image && (
                   <div className="listing-image">
-                    <img src={listing.image} alt={listing.wasteType} />
+                    <img src={`http://localhost:5000${listing.image}`} alt={listing.wasteType} />
                   </div>
                 )}
 
@@ -144,7 +129,7 @@ export default function DealerListings() {
 
                   <div className="detail-item">
                     <i className="fas fa-user"></i>
-                    <span>Listed by: {listing.userId?.name || "Unknown User"}</span>
+                    <span>Listed by: {listing.user?.name || "Unknown User"}</span>
                   </div>
 
                   <div className="detail-item">
@@ -161,24 +146,6 @@ export default function DealerListings() {
                 </div>
 
                 <div className="listing-actions">
-                  <button
-                    onClick={() => handleAccept(listing._id)}
-                    disabled={acceptingId === listing._id}
-                    className="accept-btn"
-                  >
-                    {acceptingId === listing._id ? (
-                      <>
-                        <i className="fas fa-spinner fa-spin"></i>
-                        Accepting...
-                      </>
-                    ) : (
-                      <>
-                        <i className="fas fa-check-circle"></i>
-                        Accept Listing
-                      </>
-                    )}
-                  </button>
-
                   <button className="details-btn">
                     <i className="fas fa-eye"></i>
                     View Details

@@ -1,4 +1,5 @@
 import { analyzeWasteImage } from "../utils/llmClient.js";
+import { addRewardPoints } from "../utils/rewards.js";
 
 export const categorizeWaste = async (req, res) => {
   try {
@@ -6,7 +7,7 @@ export const categorizeWaste = async (req, res) => {
 
     // send image buffer to LLM
     const result = await analyzeWasteImage(req.file.buffer);
-
+    const points = await addRewardPoints(req.user._id, "report");
     // result: { category, confidence, advice, compostable, recyclable }
     res.json(result);
   } catch (err) {

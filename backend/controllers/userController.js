@@ -1,5 +1,7 @@
 // controllers/userController.js
 import reports from "../models/reports.js";
+import User from "../models/user.js";
+
 
 export const getUserStats = async (req, res) => {
   try {
@@ -53,5 +55,16 @@ export const getRecentActivity = async (req, res) => {
   } catch (err) {
     console.error("getRecentActivity error:", err);
     res.status(500).json({ message: "Failed to fetch activity" });
+  }
+};
+
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().select("-password"); // exclude password field
+    res.json(users);
+  } catch (err) {
+    console.error("getAllUsers error:", err);
+    res.status(500).json({ message: "Failed to fetch users" });
   }
 };

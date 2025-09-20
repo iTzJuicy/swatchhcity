@@ -13,7 +13,7 @@ const reportSchema = new mongoose.Schema({
     lng: { type: Number, required: true },
   },
   category: { type: String, enum: ["wet", "dry", "recyclable", "uncategorized"], default: "uncategorized" },
-  status: { type: String, enum: ["pending", "in_progress", "resolved"], default: "pending" },
+  status: { type: String, enum: ["pending", "in_progress", "resolved","Regected"], default: "pending" },
   createdAt: { type: Date, default: Date.now },
 });
 
