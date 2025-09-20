@@ -56,4 +56,21 @@ export const getRecentActivity = () => API.get("/users/activity"); // ✅ NEW
 export const getUserRewards = (userId) => API.get(`/rewards/user/${userId}`);
 
 
+
+// ===================== ZONES =====================
+export const getZones = () => API.get("/zones");
+export const createZone = (zoneData) => API.post("/zones", zoneData);
+export const updateZone = (zoneId, zoneData) => API.put(`/zones/${zoneId}`, zoneData);
+export const deleteZone = (zoneId) => API.delete(`/zones/${zoneId}`);
+
+
+// ===================== TRUCKS =====================
+export const getTrucks = () => API.get("/trucks");
+export const createTruck = (truckData) => API.post("/trucks", truckData);
+export const updateTruck = (truckId, truckData) => API.put(`/trucks/${truckId}`, truckData);
+export const deleteTruck = (truckId) => API.delete(`/trucks/${truckId}`);
+
+// Fetch optimal truck routes
+export const getOptimalRoutes = () => API.get("/routes/optimal");
+
 export default API;

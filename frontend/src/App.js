@@ -15,6 +15,13 @@ import Reports from './pages/admin/reports';
 import Users from './pages/admin/users';
 
 
+
+import Zone from './pages/admin/Zone';
+import Truck from './pages/admin/Truck';
+import WasteMap from './pages/admin/WasteMap';
+import WastePrediction from './pages/admin/WastePrediction';
+
+
 import ReportComplaint from './pages/ReportComplaint';
 import Complaints from './pages/admin/Complaints';
 import Rewards from './pages/Rewards';
@@ -61,7 +68,10 @@ function AppContent() {
           <Route path="/admin/reports" element={<Reports />} />
           <Route path="/admin/users" element={<Users />} />
 
-
+          <Route path="/admin/zones" element={<Zone />} />
+          <Route path="/admin/trucks" element={<Truck />} />
+          <Route path="/admin/wastemap" element={<WasteMap />} />
+          <Route path="/admin/wasteprediction" element={<WastePrediction />} />
 
           {/* User Protected Routes */}
           <Route path="/dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
