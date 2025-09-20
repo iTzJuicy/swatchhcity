@@ -1,7 +1,7 @@
 /* src/styles/components/footer.css */
 .footer {
   background-color: #2E8B57;
-  color: white;
+  color: white ;
   padding: 3rem 0 0;
   margin-top: auto;
 }
@@ -17,6 +17,12 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+
+
+}
+.footer-description{
+  color: white;
+
 }
 
 .footer-section h4 {
@@ -126,6 +132,10 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  
+}
+.footer-bottom-content p{
+color: white;
 }
 
 .footer-legals {

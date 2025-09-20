@@ -12,13 +12,16 @@ export default function Complaints() {
   const [updatingId, setUpdatingId] = useState(null);
 
   // Sidebar menu items
-  const menuItems = [
+const menuItems = [
     { id: 1, title: "Dashboard", path: "/admin/dashboard", icon: "fas fa-tachometer-alt" },
     { id: 2, title: "Complaints", path: "/admin/complaints", icon: "fas fa-flag" },
     { id: 3, title: "Recycling Opportunities", path: "/admin/dealer-listings", icon: "fas fa-store" },
     { id: 4, title: "Users", path: "/admin/users", icon: "fas fa-users" },
-    { id: 5, title: "Rewards", path: "/admin/rewards", icon: "fas fa-gift" },
-    { id: 6, title: "Reports", path: "/admin/reports", icon: "fas fa-file-alt" },
+    { id: 5, title: "Zones", path: "/admin/zones", icon: "fas fa-map-marker-alt" },
+    { id: 6, title: "Trucks", path: "/admin/trucks", icon: "fas fa-truck" },
+    { id: 7, title: "Waste Prediction & Routing", path: "/admin/wastemap", icon: "fas fa-truck" },
+    { id: 8, title: "Rewards", path: "/admin/rewards", icon: "fas fa-gift" },
+    { id: 9, title: "Reports", path: "/admin/reports", icon: "fas fa-file-alt" },
   ];
 
   useEffect(() => {

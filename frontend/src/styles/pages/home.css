@@ -36,6 +36,7 @@
   margin-bottom: 2.5rem;
   line-height: 1.6;
   opacity: 0.9;
+  color: white;
 }
 
 .hero-buttons {
@@ -97,6 +98,9 @@
   padding: 1.5rem;
   text-align: center;
   animation: float 6s ease-in-out infinite;
+}
+.floating-card p{
+    color: white;
 }
 
 .floating-card:nth-child(1) {

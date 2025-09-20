@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "../services/api";
+import API from "../services/api"; // make sure this is the Axios instance
 import { toast } from "react-toastify";
 
 const AuthContext = createContext();
@@ -11,45 +11,76 @@ export const AuthProvider = ({ children }) => {
   // Load user from localStorage on app start
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (token && user) setCurrentUser(user);
+    const userString = localStorage.getItem("user");
+    if (token && userString) {
+      try {
+        const user = JSON.parse(userString);
+        setCurrentUser(user);
+      } catch (err) {
+        console.error("Failed to parse user from localStorage", err);
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+      }
+    }
     setLoading(false);
   }, []);
 
-  // Signup function
-  const signup = async (name, email, password) => {
-    try {
-      const res = await axios.post("/users/signup", { name, email, password });
-      setCurrentUser(res.data.user);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      toast.success("Account created successfully! ");
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Signup failed ");
-      throw err;
-    }
-  };
+  // ===================== SIGNUP =====================
+const signup = async (name, email, password) => {
+  try {
+    const res = await API.post("/auth/register", { name, email, password });
 
-  // Login function
-  const login = async (email, password) => {
-    try {
-      const res = await axios.post("/users/login", { email, password });
-      setCurrentUser(res.data.user);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      toast.success("Logged in successfully! ");
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Login failed ");
-      throw err;
-    }
-  };
+    // handle both { user, token } or { _id, name, email, token }
+    const user = res.data.user || {
+      _id: res.data._id,
+      name: res.data.name,
+      email: res.data.email,
+      points: res.data.points || 0, // default in case backend doesn't send
+    };
 
-  // Logout function
+    setCurrentUser(user);
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    toast.success("Account created successfully! 🎉");
+    return user;
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Signup failed ❌");
+    throw err;
+  }
+};
+
+// ===================== LOGIN =====================
+const login = async (email, password) => {
+  try {
+    const res = await API.post("/auth/login", { email, password });
+
+    const user = res.data.user || {
+      _id: res.data._id,
+      name: res.data.name,
+      email: res.data.email,
+      role: res.data.role,
+      points: res.data.points || 0,
+    };
+
+    setCurrentUser(user);
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    toast.success("Logged in successfully! 🚀");
+    return user;
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Login failed ❌");
+    throw err;
+  }
+};
+
+  // ===================== LOGOUT =====================
   const logout = () => {
     setCurrentUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    toast.info("Logged out ");
+    toast.info("Logged out 📴");
   };
 
   return (
@@ -59,5 +90,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use AuthContext
+// Custom hook
 export const useAuth = () => useContext(AuthContext);

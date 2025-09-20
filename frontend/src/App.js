@@ -17,12 +17,21 @@ import Users from './pages/admin/users';
 
 import ReportComplaint from './pages/ReportComplaint';
 import Complaints from './pages/admin/Complaints';
+import Zone from './pages/admin/Zone';
+import Truck from './pages/admin/Truck';
+import WasteMap from './pages/admin/WasteMap';
+import WastePrediction from './pages/admin/WastePrediction';
+
+
+
+
 import Rewards from './pages/Rewards';
 import Profile from './pages/Profile';
 import ListWaste from './pages/ListWaste';
 import DealerListings from './pages/admin/DealerListings';
 import MyComplaints from './pages/MyComplaints';
 import UserDashboard from './pages/UserDashboard';
+import Categorise from './pages/Categorise';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
@@ -60,6 +69,14 @@ function AppContent() {
           <Route path="/admin/dealer-listings" element={<DealerListings />} />
           <Route path="/admin/reports" element={<Reports />} />
           <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/zones" element={<Zone />} />
+          <Route path="/admin/trucks" element={<Truck />} />
+          <Route path="/admin/wastemap" element={<WasteMap />} />
+          <Route path="/admin/wasteprediction" element={<WastePrediction />} />
+
+
+
+
 
 
 
@@ -68,8 +85,24 @@ function AppContent() {
           <Route path="/report" element={<ProtectedRoute><ReportComplaint /></ProtectedRoute>} />
           <Route path="/rewards" element={<ProtectedRoute><Rewards /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/recyle-waste" element={<ProtectedRoute><ListWaste /></ProtectedRoute>} />
+          <Route path="/recycle-waste" element={<ProtectedRoute><ListWaste /></ProtectedRoute>} />
           <Route path="/my-complaints" element={<ProtectedRoute><MyComplaints /></ProtectedRoute>} />
+           <Route 
+            path="/categorise" 
+            element={
+              <ProtectedRoute>
+                <Categorise />
+              </ProtectedRoute>
+            } 
+          /> 
+          <Route 
+            path="/complaints" 
+            element={
+              <ProtectedRoute>
+                <Complaints />
+              </ProtectedRoute>
+            } 
+          />
 
           {/* Catch all */}
           <Route path="*" element={<Navigate to="/" />} />

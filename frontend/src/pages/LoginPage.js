@@ -28,7 +28,7 @@ function LoginPage() {
     try {
       await login(formData.email, formData.password);
       toast.success("Logged in successfully! 🚀");
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       toast.error(err.message || "Invalid credentials ❌");
     } finally {

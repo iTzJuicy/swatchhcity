@@ -1,0 +1,54 @@
+.complaints-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.complaints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.complaint-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fff;
+}
+
+.complaint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.badge-pending {
+  background: orange;
+}
+
+.badge-in-progress {
+  background: #007bff;
+}
+
+.badge-resolved {
+  background: green;
+}
+
+.badge-rejected {
+  background: red;
+}
+
+.complaint-image {
+  max-width: 200px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
