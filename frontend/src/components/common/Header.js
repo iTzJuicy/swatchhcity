@@ -42,7 +42,7 @@ const Header = () => {
             <>
               <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
               <Link to="/report" onClick={() => setIsMenuOpen(false)}>Report Issue</Link>
-              <Link to="/complaints" onClick={() => setIsMenuOpen(false)}>My Complaints</Link>
+              <Link to="/my-complaints" onClick={() => setIsMenuOpen(false)}>My Complaints</Link>
               <Link to="/categorise" onClick={() => setIsMenuOpen(false)}>Segregate</Link>
               <Link to="/rewards" onClick={() => setIsMenuOpen(false)}>Rewards</Link>
               <div className="user-menu">
@@ -54,7 +54,7 @@ const Header = () => {
                 <Link to="/profile" className="profile-link" onClick={() => setIsMenuOpen(false)}>
                   <i className="fas fa-user-circle"></i>
                 </Link>
-                <button onClick={handleLogout} className="logout-btn">
+                <button onClick={handleLogout} className="color: black; background-color: black;logout-btn">
                   Logout
                 </button>
               </div>

@@ -7,9 +7,11 @@ const userSchema = new mongoose.Schema(
     phone: { type: String },
     password: { type: String, required: true },
     role: { type: String, enum: ["citizen", "admin"], default: "citizen" },
+    org: { type: String }, // only for admins
     points: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
+
 
 export default mongoose.model("User", userSchema);

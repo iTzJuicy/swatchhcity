@@ -6,11 +6,23 @@ import "../styles/pages/auth.css";
 
 function SignupPage() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  });
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  role: "citizen",
+  org: ""
+});
+const [isAdmin, setIsAdmin] = useState(false);
+
+const handleCheckboxChange = (e) => {
+  setIsAdmin(e.target.checked);
+  setFormData(prev => ({
+    ...prev,
+    role: e.target.checked ? "admin" : "citizen",
+    org: e.target.checked ? prev.org : "" // reset if unchecked
+  }));
+};
   const [isLoading, setIsLoading] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
@@ -55,7 +67,13 @@ if (!/\S+@\S+\.\S+/.test(formData.email)) {
     setIsLoading(true);
     
     try {
-      await signup(formData.name, formData.email, formData.password);
+      await signup(
+        formData.name,
+        formData.email,
+        formData.password,
+        formData.role,
+        formData.org
+      );
       toast.success("Account created successfully! 🎉");
       navigate("/dashboard");
     } catch (err) {
@@ -133,6 +151,30 @@ if (!/\S+@\S+\.\S+/.test(formData.email)) {
             />
             <i className="input-icon fas fa-lock"></i>
           </div>
+          <div className="form-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={isAdmin}
+              onChange={handleCheckboxChange}
+            />
+            I am an Admin
+          </label>
+        </div>
+
+        {isAdmin && (
+          <div className="form-group">
+            <label htmlFor="org">Organization</label>
+            <input
+              id="org"
+              name="org"
+              type="text"
+              placeholder="Enter your organization"
+              value={formData.org}
+              onChange={handleChange}
+            />
+          </div>
+        )}
           
           <button 
             type="submit" 

@@ -26,9 +26,9 @@ export const AuthProvider = ({ children }) => {
 }, []);
 
   // Signup function
-  const signup = async (name, email, password) => {
+  const signup = async (name, email, password,role,org) => {
     try {
-      const res = await axios.post("/auth/register", { name, email, password });
+      const res = await axios.post("/auth/register", { name, email, password , role, org});
       setCurrentUser(res.data.user);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -38,6 +38,8 @@ export const AuthProvider = ({ children }) => {
       throw err;
     }
   };
+
+  
 
   // Login function
    const login = async (email, password) => {

@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 
@@ -10,12 +10,19 @@ import Footer from './components/common/Footer';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/admin/Dashboard';
+import Reports from './pages/admin/reports';
+import Users from './pages/admin/users';
+
+
 import ReportComplaint from './pages/ReportComplaint';
-import Complaints from './pages/Complaints';
+import Complaints from './pages/admin/Complaints';
 import Rewards from './pages/Rewards';
 import Profile from './pages/Profile';
-import Categorise from './pages/Categorise';
+import ListWaste from './pages/ListWaste';
+import DealerListings from './pages/admin/DealerListings';
+import MyComplaints from './pages/MyComplaints';
+import UserDashboard from './pages/UserDashboard';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
@@ -32,86 +39,43 @@ const PublicRoute = ({ children }) => {
   return !currentUser ? children : <Navigate to="/dashboard" />;
 };
 
+// Main App Content
 function AppContent() {
+  const location = useLocation();
+
   return (
     <div className="App">
-      <Header />
+      {/* Render Header/Footer only for non-admin routes */}
+      {!location.pathname.startsWith('/admin') && <Header />}
       <main className="main-content">
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
-          <Route 
-            path="/login" 
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            } 
-          />
-          <Route 
-            path="/signup" 
-            element={
-              <PublicRoute>
-                <SignupPage />
-              </PublicRoute>
-            } 
-          />
-          
-          {/* Protected Routes */}
-          <Route 
-            path="/dashboard" 
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/report" 
-            element={
-              <ProtectedRoute>
-                <ReportComplaint />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-                path="/categorise" 
-                element={
-                    <ProtectedRoute>
-                        <Categorise />
-                    </ProtectedRoute>
-                } 
-            />
-          <Route 
-            path="/complaints" 
-            element={
-              <ProtectedRoute>
-                <Complaints />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/rewards" 
-            element={
-              <ProtectedRoute>
-                <Rewards />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/profile" 
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            } 
-          />
-          
-          {/* Catch all route */}
+          <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
+          <Route path="/signup" element={<PublicRoute><SignupPage /></PublicRoute>} />
+
+          {/* Admin Routes */}
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/complaints" element={<Complaints />} />
+          <Route path="/admin/dealer-listings" element={<DealerListings />} />
+          <Route path="/admin/reports" element={<Reports />} />
+          <Route path="/admin/users" element={<Users />} />
+
+
+
+          {/* User Protected Routes */}
+          <Route path="/dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+          <Route path="/report" element={<ProtectedRoute><ReportComplaint /></ProtectedRoute>} />
+          <Route path="/rewards" element={<ProtectedRoute><Rewards /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/recyle-waste" element={<ProtectedRoute><ListWaste /></ProtectedRoute>} />
+          <Route path="/my-complaints" element={<ProtectedRoute><MyComplaints /></ProtectedRoute>} />
+
+          {/* Catch all */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
-      <Footer />
+      {!location.pathname.startsWith('/admin') && <Footer />}
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -126,7 +90,7 @@ function AppContent() {
     </div>
   );
 }
-
+// App Wrapper with AuthProvider and Router
 function App() {
   return (
     <AuthProvider>
